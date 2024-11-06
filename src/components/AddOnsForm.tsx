@@ -1,5 +1,5 @@
 import { ADD_ON_OPTIONS } from '../data';
-import { AddOns, FormValues } from '../types';
+import { AddOn, AddOns, FormValues } from '../types';
 
 interface AddOnFormProps {
   formData: FormValues;
@@ -7,7 +7,7 @@ interface AddOnFormProps {
 }
 
 export function AddOnsForm({ formData, updateFields }: AddOnFormProps) {
-  const handleAddOnChange = (addOn: (typeof ADD_ON_OPTIONS)[number]['name']) => {
+  const handleAddOnChange = (addOn: AddOn) => {
     const newAddOns = formData.addOns.includes(addOn)
       ? formData.addOns.filter((a) => a !== addOn)
       : formData.addOns.concat(addOn);
@@ -26,15 +26,15 @@ export function AddOnsForm({ formData, updateFields }: AddOnFormProps) {
               key={addOn.name}
               type="button"
               className={`flex items-center gap-4 rounded-lg border p-4 text-left ${
-                formData.addOns.includes(addOn.name)
+                formData.addOns.includes(addOn)
                   ? 'border-purplish-blue bg-alabaster'
                   : 'border-light-gray'
               }`}
-              onClick={() => handleAddOnChange(addOn.name)}
+              onClick={() => handleAddOnChange(addOn)}
             >
               <input
                 type="checkbox"
-                checked={formData.addOns.includes(addOn.name)}
+                checked={formData.addOns.includes(addOn)}
                 readOnly
                 className="border-light-gray accent-purplish-blue h-5 w-5 rounded"
               />

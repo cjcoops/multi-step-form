@@ -13,8 +13,10 @@ export type PlanSelection = {
   isYearly: boolean;
 };
 
+export type AddOn = (typeof ADD_ON_OPTIONS)[number];
+
 export type AddOns = {
-  addOns: (typeof ADD_ON_OPTIONS)[number]['name'][];
+  addOns: AddOn[];
 };
 
 export type FormValues = PersonalInfo & PlanSelection & AddOns;
