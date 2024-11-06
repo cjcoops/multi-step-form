@@ -4,6 +4,7 @@ import { PersonalInfoForm } from './components/PersonalInfoForm';
 import { PlanSelectionForm } from './components/PlanSelectionForm';
 import { AddOnsForm } from './components/AddOnsForm';
 import { PLAN_OPTIONS } from './data';
+import { Summary } from './components/Summary';
 
 const STEPS = ['Your Info', 'Select Plan', 'Add-ons', 'Summary'];
 
@@ -57,7 +58,7 @@ function App() {
           {currentStep === 3 && (
             <AddOnsForm formData={formValues} updateFields={handleUpdateFields} />
           )}
-          {currentStep === 4 && <div>Step 4: Summary</div>}
+          {currentStep === 4 && <Summary formData={formValues} />}
         </div>
       </main>
       <footer className="flex">
