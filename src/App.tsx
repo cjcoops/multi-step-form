@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FormValues } from './types';
 import { PersonalInfoForm } from './components/PersonalInfoForm';
 import { PlanSelectionForm } from './components/PlanSelectionForm';
+import { AddOnsForm } from './components/AddOnsForm';
 
 const STEPS = ['Your Info', 'Select Plan', 'Add-ons', 'Summary'];
 
@@ -13,6 +14,7 @@ function App() {
     phone: '',
     plan: 'Arcade',
     isYearly: false,
+    addOns: [],
   });
 
   const handleNext = () => {
@@ -51,7 +53,9 @@ function App() {
           {currentStep === 2 && (
             <PlanSelectionForm formData={formValues} updateFields={handleUpdateFields} />
           )}
-          {currentStep === 3 && <div>Step 3: Add-ons</div>}
+          {currentStep === 3 && (
+            <AddOnsForm formData={formValues} updateFields={handleUpdateFields} />
+          )}
           {currentStep === 4 && <div>Step 4: Summary</div>}
         </div>
       </main>

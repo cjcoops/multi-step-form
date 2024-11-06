@@ -1,4 +1,4 @@
-import { PLAN_OPTIONS } from './data';
+import { ADD_ON_OPTIONS, PLAN_OPTIONS } from './data';
 
 export type PersonalInfo = {
   name: string;
@@ -11,4 +11,8 @@ export type PlanSelection = {
   isYearly: boolean;
 };
 
-export type FormValues = PersonalInfo & PlanSelection;
+export type AddOns = {
+  addOns: (typeof ADD_ON_OPTIONS)[number]['name'][];
+};
+
+export type FormValues = PersonalInfo & PlanSelection & AddOns;
