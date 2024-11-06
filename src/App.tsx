@@ -1,9 +1,16 @@
 import { useState } from 'react';
+import { PersonalInfo } from './types';
+import { PersonalInfoForm } from './components/PersonalInfoForm';
 
 const STEPS = ['Your Info', 'Select Plan', 'Add-ons', 'Summary'];
 
 function App() {
   const [currentStep, setStep] = useState(1);
+  const [formValues, setFormValues] = useState<PersonalInfo>({
+    name: '',
+    email: '',
+    phone: '',
+  });
 
   const handleNext = () => {
     setStep((prevStep) => Math.min(prevStep + 1, STEPS.length));
@@ -11,6 +18,10 @@ function App() {
 
   const handleBack = () => {
     setStep((prevStep) => Math.max(prevStep - 1, 1));
+  };
+
+  const handleUpdateFields = (fields: Partial<PersonalInfo>) => {
+    setFormValues((prevValues) => ({ ...prevValues, ...fields }));
   };
 
   return (
@@ -31,7 +42,9 @@ function App() {
       </header>
       <main>
         <div className="rounded-lg bg-white p-6 shadow-lg">
-          {currentStep === 1 && <div>Step 1: Personal Info</div>}
+          {currentStep === 1 && (
+            <PersonalInfoForm formData={formValues} updateFields={handleUpdateFields} />
+          )}
           {currentStep === 2 && <div>Step 2: Select Plan</div>}
           {currentStep === 3 && <div>Step 3: Add-ons</div>}
           {currentStep === 4 && <div>Step 4: Summary</div>}
