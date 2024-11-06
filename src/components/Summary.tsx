@@ -17,8 +17,6 @@ export function Summary({ formData }: SummaryProps) {
     planPrice
   );
 
-  //   const totalPrice = 10;
-
   return (
     <div className="space-y-6">
       <h2 className="text-marine-blue text-2xl font-bold">Finishing up</h2>

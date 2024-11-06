@@ -17,7 +17,7 @@ export const PLAN_OPTIONS = [
     yearlyPrice: 150,
     icon: '/images/icon-pro.svg',
   },
-] as const;
+];
 
 export const ADD_ON_OPTIONS = [
   {
@@ -38,4 +38,4 @@ export const ADD_ON_OPTIONS = [
     monthlyPrice: 2,
     yearlyPrice: 20,
   },
-] as const;
+];
