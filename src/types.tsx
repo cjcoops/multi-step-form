@@ -6,8 +6,10 @@ export type PersonalInfo = {
   phone: string;
 };
 
+export type Plan = (typeof PLAN_OPTIONS)[number];
+
 export type PlanSelection = {
-  plan: (typeof PLAN_OPTIONS)[number]['name'];
+  plan: Plan;
   isYearly: boolean;
 };
 

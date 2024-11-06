@@ -3,6 +3,7 @@ import { FormValues } from './types';
 import { PersonalInfoForm } from './components/PersonalInfoForm';
 import { PlanSelectionForm } from './components/PlanSelectionForm';
 import { AddOnsForm } from './components/AddOnsForm';
+import { PLAN_OPTIONS } from './data';
 
 const STEPS = ['Your Info', 'Select Plan', 'Add-ons', 'Summary'];
 
@@ -12,7 +13,7 @@ function App() {
     name: '',
     email: '',
     phone: '',
-    plan: 'Arcade',
+    plan: PLAN_OPTIONS[0],
     isYearly: false,
     addOns: [],
   });

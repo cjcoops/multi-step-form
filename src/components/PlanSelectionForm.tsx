@@ -1,5 +1,5 @@
 import { PLAN_OPTIONS } from '../data';
-import { PlanSelection } from '../types';
+import { Plan, PlanSelection } from '../types';
 
 interface PlanSelectionFormProps {
   formData: PlanSelection;
@@ -7,7 +7,7 @@ interface PlanSelectionFormProps {
 }
 
 export function PlanSelectionForm({ formData, updateFields }: PlanSelectionFormProps) {
-  const handlePlanChange = (plan: (typeof PLAN_OPTIONS)[number]['name']) => {
+  const handlePlanChange = (plan: Plan) => {
     updateFields({ plan });
   };
 
@@ -27,11 +27,9 @@ export function PlanSelectionForm({ formData, updateFields }: PlanSelectionFormP
               key={plan.name}
               type="button"
               className={`items-top flex gap-4 rounded-lg border p-4 ${
-                formData.plan === plan.name
-                  ? 'border-purplish-blue bg-alabaster'
-                  : 'border-light-gray'
+                formData.plan === plan ? 'border-purplish-blue bg-alabaster' : 'border-light-gray'
               }`}
-              onClick={() => handlePlanChange(plan.name)}
+              onClick={() => handlePlanChange(plan)}
             >
               <img src={plan.icon} alt={plan.name} className="aspect-square h-12" />
               <div className="text-left">
