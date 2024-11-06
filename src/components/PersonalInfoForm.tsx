@@ -2,7 +2,7 @@ import { PersonalInfo } from '../types';
 
 interface PersonalInfoProps {
   formData: PersonalInfo;
-  updateFields: (fields: Partial<PersonalInfoProps['formData']>) => void;
+  updateFields: (fields: Partial<PersonalInfo>) => void;
 }
 
 export function PersonalInfoForm({ formData, updateFields }: PersonalInfoProps) {
