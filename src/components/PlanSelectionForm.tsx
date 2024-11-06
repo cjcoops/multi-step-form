@@ -45,8 +45,7 @@ export function PlanSelectionForm({ formData, updateFields }: PlanSelectionFormP
           ))}
         </div>
 
-        {/* Billing toggle */}
-        {/* <div className="bg-alabaster flex items-center justify-center gap-4 rounded-lg p-4">
+        <div className="bg-alabaster flex items-center justify-center gap-4 rounded-lg p-4">
           <span className={`${!formData.isYearly ? 'text-marine-blue' : 'text-cool-gray'}`}>
             Monthly
           </span>
@@ -64,7 +63,7 @@ export function PlanSelectionForm({ formData, updateFields }: PlanSelectionFormP
           <span className={`${formData.isYearly ? 'text-marine-blue' : 'text-cool-gray'}`}>
             Yearly
           </span>
-        </div> */}
+        </div>
       </div>
     </div>
   );
