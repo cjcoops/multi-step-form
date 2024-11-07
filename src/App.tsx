@@ -9,7 +9,7 @@ import { Summary } from './components/Summary';
 const STEPS = ['Your Info', 'Select Plan', 'Add-ons', 'Summary'];
 
 function App() {
-  const [currentStep, setStep] = useState(2);
+  const [currentStep, setStep] = useState(1);
   const [formValues, setFormValues] = useState<FormValues>({
     name: '',
     email: '',
@@ -33,22 +33,22 @@ function App() {
 
   return (
     <div className="bg-alabaster mx-auto min-h-screen max-w-md">
-      <header>
-        <img
-          src="/images/bg-sidebar-mobile.svg"
-          alt="Decorative sidebar background"
-          className="w-full"
-        />
-        <div className="flex gap-4 p-4">
+      <header className="h-40 bg-[url('/images/bg-sidebar-mobile.svg')] bg-cover bg-no-repeat p-10">
+        <div className="flex justify-center gap-4">
           {STEPS.map((step, index) => (
-            <div key={step} className={`${currentStep === index + 1 ? 'text-red-300' : ''}`}>
+            <div
+              key={step}
+              className={`flex h-8 w-8 items-center justify-center rounded-full border border-white ${
+                currentStep === index + 1 ? 'bg-light-blue text-marine-blue' : 'text-white'
+              }`}
+            >
               {index + 1}
             </div>
           ))}
         </div>
       </header>
       <main>
-        <div className="rounded-lg bg-white p-6 shadow-lg">
+        <div className="mx-4 -mt-14 rounded-lg bg-white p-6 shadow-lg">
           {currentStep === 1 && (
             <PersonalInfoForm formData={formValues} updateFields={handleUpdateFields} />
           )}
@@ -61,7 +61,7 @@ function App() {
           {currentStep === 4 && <Summary formData={formValues} />}
         </div>
       </main>
-      <footer className="flex">
+      <footer className="fixed bottom-0 left-0 right-0 flex bg-white p-4">
         {currentStep > 1 && (
           <button type="button" onClick={handleBack} className="text-cool-gray">
             Go Back
