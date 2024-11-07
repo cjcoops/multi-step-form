@@ -2,9 +2,10 @@ import { FormValues } from '../types';
 
 interface SummaryProps {
   formData: FormValues;
+  changePlan: () => void;
 }
 
-export function Summary({ formData }: SummaryProps) {
+export function Summary({ formData, changePlan }: SummaryProps) {
   const { plan, isYearly, addOns } = formData;
 
   const planPrice = isYearly ? plan.yearlyPrice : plan.monthlyPrice;
@@ -30,8 +31,11 @@ export function Summary({ formData }: SummaryProps) {
             <h3 className="text-marine-blue font-medium">
               {plan.name} ({isYearly ? 'Yearly' : 'Monthly'})
             </h3>
-            <button className="text-cool-gray hover:text-marine-blue text-sm underline">
-              Change TODO
+            <button
+              className="text-cool-gray hover:text-marine-blue text-sm underline"
+              onClick={changePlan}
+            >
+              Change
             </button>
           </div>
           <span className="text-marine-blue font-bold">

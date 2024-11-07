@@ -31,6 +31,8 @@ function App() {
     setFormValues((prevValues) => ({ ...prevValues, ...fields }));
   };
 
+  const goToPlanSelection = () => setStep(2);
+
   return (
     <div className="bg-alabaster mx-auto min-h-screen max-w-md">
       <header className="h-40 bg-[url('/images/bg-sidebar-mobile.svg')] bg-cover bg-no-repeat p-10">
@@ -38,7 +40,7 @@ function App() {
           {STEPS.map((step, index) => (
             <div
               key={step}
-              className={`flex h-8 w-8 items-center justify-center rounded-full border border-white ${
+              className={`flex aspect-square h-10 items-center justify-center rounded-full border border-white ${
                 currentStep === index + 1 ? 'bg-light-blue text-marine-blue' : 'text-white'
               }`}
             >
@@ -58,7 +60,7 @@ function App() {
           {currentStep === 3 && (
             <AddOnsForm formData={formValues} updateFields={handleUpdateFields} />
           )}
-          {currentStep === 4 && <Summary formData={formValues} />}
+          {currentStep === 4 && <Summary formData={formValues} changePlan={goToPlanSelection} />}
         </div>
       </main>
       <footer className="fixed bottom-0 left-0 right-0 flex bg-white p-4">

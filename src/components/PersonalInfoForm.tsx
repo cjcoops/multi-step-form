@@ -23,7 +23,7 @@ export function PersonalInfoForm({ formData, updateFields }: PersonalInfoProps) 
             id="name"
             value={formData.name}
             onChange={(e) => updateFields({ name: e.target.value })}
-            className="mt-1 w-full rounded border p-2"
+            className="placeholder:text-cool-gray mt-1 w-full rounded border p-2"
             placeholder="e.g. Stephen King"
           />
         </div>
@@ -36,7 +36,7 @@ export function PersonalInfoForm({ formData, updateFields }: PersonalInfoProps) 
             id="email"
             value={formData.email}
             onChange={(e) => updateFields({ email: e.target.value })}
-            className="mt-1 w-full rounded border p-2"
+            className="placeholder:text-cool-gray mt-1 w-full rounded border p-2"
             placeholder="e.g. stephen.king@example.com"
           />
         </div>
@@ -49,7 +49,7 @@ export function PersonalInfoForm({ formData, updateFields }: PersonalInfoProps) 
             id="phone"
             value={formData.phone}
             onChange={(e) => updateFields({ phone: e.target.value })}
-            className="mt-1 w-full rounded border p-2"
+            className="placeholder:text-cool-gray mt-1 w-full rounded border p-2"
             placeholder="e.g. +1 234 567 890"
           />
         </div>

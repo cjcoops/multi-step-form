@@ -9,6 +9,9 @@
       tailwind.config = {
         theme: {
           extend: {
+            fontFamily: {
+              sans: ['Ubuntu', 'sans-serif'],
+            },
             colors: {
               // Primary colors
               'marine-blue': 'hsl(213, 96%, 18%)',
@@ -27,6 +30,26 @@
         },
       };
     </script>
+    <style type="text/tailwindcss">
+      @font-face {
+        font-family: 'Ubuntu';
+        src: url('/fonts/Ubuntu-Regular.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        src: url('/fonts/Ubuntu-Medium.ttf') format('truetype');
+        font-weight: 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        src: url('/fonts/Ubuntu-Bold.ttf') format('truetype');
+        font-weight: 700;
+        font-style: normal;
+      }
+    </style>
 
     <title>React Multi Step Form</title>
   </head>
