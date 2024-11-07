@@ -34,7 +34,7 @@ function App() {
   const goToPlanSelection = () => setStep(2);
 
   return (
-    <div className="bg-alabaster mx-auto min-h-screen max-w-md">
+    <div className="bg-alabaster mx-auto flex min-h-screen max-w-md flex-col">
       <header className="h-40 bg-[url('/images/bg-sidebar-mobile.svg')] bg-cover bg-no-repeat p-10">
         <div className="flex justify-center gap-4">
           {STEPS.map((step, index) => (
@@ -63,7 +63,7 @@ function App() {
           {currentStep === 4 && <Summary formData={formValues} changePlan={goToPlanSelection} />}
         </div>
       </main>
-      <footer className="fixed bottom-0 left-0 right-0 flex bg-white p-4">
+      <footer className="sticky bottom-0 mt-auto flex bg-white p-4">
         {currentStep > 1 && (
           <button type="button" onClick={handleBack} className="text-cool-gray">
             Go Back
