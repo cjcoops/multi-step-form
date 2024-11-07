@@ -41,7 +41,7 @@ function App() {
         <Header currentStep={currentStep} steps={STEPS} />
       </div>
       <div className="flex flex-col justify-between">
-        <main className="mx-4 -mt-14 rounded-lg bg-white p-6 shadow-lg md:mt-2 md:shadow-none">
+        <main className="mx-4 -mt-14 max-w-xl rounded-lg bg-white p-6 shadow-lg md:mx-auto md:mt-2 md:w-full md:shadow-none">
           {currentStep === 1 && (
             <PersonalInfoForm formData={formValues} updateFields={handleUpdateFields} />
           )}
@@ -54,12 +54,14 @@ function App() {
           {currentStep === 4 && <Summary formData={formValues} changePlan={goToPlanSelection} />}
         </main>
         <div className="fixed bottom-0 left-0 right-0 md:static">
-          <StepButtons
-            currentStep={currentStep}
-            totalSteps={STEPS.length}
-            onNext={handleNext}
-            onBack={handleBack}
-          />
+          <div className="mx-auto w-full max-w-[550px]">
+            <StepButtons
+              currentStep={currentStep}
+              totalSteps={STEPS.length}
+              onNext={handleNext}
+              onBack={handleBack}
+            />
+          </div>
         </div>
       </div>
     </div>
