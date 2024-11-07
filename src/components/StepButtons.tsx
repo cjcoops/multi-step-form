@@ -7,7 +7,7 @@ interface StepButtonsProps {
 
 export function StepButtons({ currentStep, totalSteps, onNext, onBack }: StepButtonsProps) {
   return (
-    <footer className="sticky bottom-0 mt-auto flex bg-white p-4">
+    <div className="mt-auto flex bg-white p-4">
       {currentStep > 1 && (
         <button type="button" onClick={onBack} className="text-cool-gray">
           Go Back
@@ -22,6 +22,6 @@ export function StepButtons({ currentStep, totalSteps, onNext, onBack }: StepBut
       >
         {currentStep === totalSteps ? 'Confirm' : 'Next Step'}
       </button>
-    </footer>
+    </div>
   );
 }

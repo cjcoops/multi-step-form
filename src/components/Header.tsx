@@ -5,7 +5,7 @@ interface HeaderProps {
 
 export function Header({ currentStep, steps }: HeaderProps) {
   return (
-    <header className="h-40 bg-[url('/images/bg-sidebar-mobile.svg')] bg-cover bg-no-repeat p-10">
+    <header className="h-full bg-[url('/images/bg-sidebar-mobile.svg')] bg-cover bg-no-repeat p-10 md:rounded-2xl md:bg-[url('/images/bg-sidebar-desktop.svg')]">
       <div className="flex justify-center gap-4">
         {steps.map((step, index) => (
           <div
