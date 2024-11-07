@@ -5,7 +5,7 @@ import { PlanSelectionForm } from './components/PlanSelectionForm';
 import { AddOnsForm } from './components/AddOnsForm';
 import { PLAN_OPTIONS } from './data';
 import { Summary } from './components/Summary';
-import { Header } from './components/Header';
+import { Sidebar } from './components/Sidebar';
 import { StepButtons } from './components/StepButtons';
 
 const STEPS = ['Your Info', 'Select Plan', 'Add-ons', 'Summary'];
@@ -39,7 +39,7 @@ function App() {
     <div className="flex min-h-screen md:items-center md:justify-center">
       <div className="mx-auto flex h-full w-full max-w-5xl flex-col rounded-3xl md:grid md:min-h-[600px] md:grid-cols-[274px,1fr] md:bg-white md:p-4">
         <div className="h-40 md:h-full">
-          <Header currentStep={currentStep} steps={STEPS} />
+          <Sidebar currentStep={currentStep} steps={STEPS} />
         </div>
         <div className="items flex flex-col justify-between">
           <main className="mx-4 -mt-14 max-w-xl overflow-y-auto rounded-lg bg-white p-6 pb-24 shadow-lg md:mx-auto md:mt-2 md:w-full md:pb-6 md:shadow-none">

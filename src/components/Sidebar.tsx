@@ -1,11 +1,11 @@
-interface HeaderProps {
+interface SidebarProps {
   currentStep: number;
   steps: string[];
 }
 
-export function Header({ currentStep, steps }: HeaderProps) {
+export function Sidebar({ currentStep, steps }: SidebarProps) {
   return (
-    <header className="h-full bg-[url('/images/bg-sidebar-mobile.svg')] bg-cover bg-no-repeat p-10 md:rounded-2xl md:bg-[url('/images/bg-sidebar-desktop.svg')] md:p-8 md:pt-10">
+    <div className="h-full bg-[url('/images/bg-sidebar-mobile.svg')] bg-cover bg-no-repeat p-10 md:rounded-2xl md:bg-[url('/images/bg-sidebar-desktop.svg')] md:p-8 md:pt-10">
       <div className="flex justify-center gap-4 md:flex-col md:gap-8">
         {steps.map((step, index) => (
           <div className="flex items-center gap-4 text-white" key={step}>
@@ -23,6 +23,6 @@ export function Header({ currentStep, steps }: HeaderProps) {
           </div>
         ))}
       </div>
-    </header>
+    </div>
   );
 }
