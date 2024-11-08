@@ -1,5 +1,6 @@
 import { PLAN_OPTIONS } from '../data';
 import { Plan, PlanSelection } from '../types';
+import { BillingToggle } from './BillingToggle';
 
 interface PlanSelectionFormProps {
   formData: PlanSelection;
@@ -16,7 +17,7 @@ export function PlanSelectionForm({ formData, updateFields }: PlanSelectionFormP
   };
 
   return (
-    <div>
+    <div role="group" aria-labelledby="plan-selection-title">
       <h1 className="text-marine-blue text-2xl font-bold">Select your plan</h1>
       <p className="text-cool-gray mt-2">You have the option of monthly or yearly billing.</p>
 
@@ -43,25 +44,7 @@ export function PlanSelectionForm({ formData, updateFields }: PlanSelectionFormP
           ))}
         </div>
 
-        <div className="bg-alabaster flex items-center justify-center gap-4 rounded-lg p-4">
-          <span className={`${!formData.isYearly ? 'text-marine-blue' : 'text-cool-gray'}`}>
-            Monthly
-          </span>
-          <button
-            type="button"
-            className="bg-marine-blue relative h-6 w-12 rounded-full"
-            onClick={handleBillingCycle}
-          >
-            <div
-              className={`absolute top-1 h-4 w-4 rounded-full bg-white transition-all ${
-                formData.isYearly ? 'left-7' : 'left-1'
-              }`}
-            />
-          </button>
-          <span className={`${formData.isYearly ? 'text-marine-blue' : 'text-cool-gray'}`}>
-            Yearly
-          </span>
-        </div>
+        <BillingToggle isYearly={formData.isYearly} onChange={handleBillingCycle} />
       </div>
     </div>
   );
