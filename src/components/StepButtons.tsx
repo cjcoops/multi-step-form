@@ -1,14 +1,14 @@
 interface StepButtonsProps {
-  currentStep: number;
-  totalSteps: number;
+  isFirstStep: boolean;
+  isLastStep: boolean;
   onNext: () => void;
   onBack: () => void;
 }
 
-export function StepButtons({ currentStep, totalSteps, onNext, onBack }: StepButtonsProps) {
+export function StepButtons({ isFirstStep, isLastStep, onNext, onBack }: StepButtonsProps) {
   return (
     <div className="mt-auto flex bg-white p-4">
-      {currentStep > 1 && (
+      {!isFirstStep && (
         <button type="button" onClick={onBack} className="text-cool-gray">
           Go Back
         </button>
@@ -17,10 +17,10 @@ export function StepButtons({ currentStep, totalSteps, onNext, onBack }: StepBut
         type="button"
         onClick={onNext}
         className={`ml-auto rounded-md px-4 py-2 text-white ${
-          currentStep === totalSteps ? 'bg-purplish-blue' : 'bg-marine-blue'
+          isLastStep ? 'bg-purplish-blue' : 'bg-marine-blue'
         }`}
       >
-        {currentStep === totalSteps ? 'Confirm' : 'Next Step'}
+        {isLastStep ? 'Confirm' : 'Next Step'}
       </button>
     </div>
   );

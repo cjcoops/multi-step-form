@@ -10,7 +10,8 @@ import { StepButtons } from './components/StepButtons';
 import { useMultiStepForm } from './hooks/useMultiStepForm';
 
 function App() {
-  const { currentStep, nextStep, previousStep, goToStep } = useMultiStepForm(STEPS);
+  const { currentStep, nextStep, previousStep, goToStep, isFirstStep, isLastStep } =
+    useMultiStepForm(STEPS);
 
   const [formValues, setFormValues] = useState<FormValues>({
     name: '',
@@ -47,8 +48,8 @@ function App() {
           <div className="fixed bottom-0 left-0 right-0 md:static">
             <div className="mx-auto w-full max-w-[550px]">
               <StepButtons
-                currentStep={currentStep}
-                totalSteps={STEPS.length}
+                isFirstStep={isFirstStep}
+                isLastStep={isLastStep}
                 onNext={nextStep}
                 onBack={previousStep}
               />
