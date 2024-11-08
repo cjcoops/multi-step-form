@@ -1,3 +1,5 @@
+export const STEPS = ['Your Info', 'Select Plan', 'Add-ons', 'Summary'];
+
 export const PLAN_OPTIONS = [
   {
     name: 'Arcade',

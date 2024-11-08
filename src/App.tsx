@@ -3,15 +3,15 @@ import { FormValues } from './types';
 import { PersonalInfoForm } from './components/PersonalInfoForm';
 import { PlanSelectionForm } from './components/PlanSelectionForm';
 import { AddOnsForm } from './components/AddOnsForm';
-import { PLAN_OPTIONS } from './data';
+import { PLAN_OPTIONS, STEPS } from './data';
 import { Summary } from './components/Summary';
 import { Sidebar } from './components/Sidebar';
 import { StepButtons } from './components/StepButtons';
-
-const STEPS = ['Your Info', 'Select Plan', 'Add-ons', 'Summary'];
+import { useMultiStepForm } from './hooks/useMultiStepForm';
 
 function App() {
-  const [currentStep, setStep] = useState(1);
+  const { currentStep, nextStep, previousStep, goToStep } = useMultiStepForm(STEPS);
+
   const [formValues, setFormValues] = useState<FormValues>({
     name: '',
     email: '',
@@ -21,19 +21,9 @@ function App() {
     addOns: [],
   });
 
-  const handleNext = () => {
-    setStep((prevStep) => Math.min(prevStep + 1, STEPS.length));
-  };
-
-  const handleBack = () => {
-    setStep((prevStep) => Math.max(prevStep - 1, 1));
-  };
-
   const handleUpdateFields = (fields: Partial<FormValues>) => {
     setFormValues((prevValues) => ({ ...prevValues, ...fields }));
   };
-
-  const goToPlanSelection = () => setStep(2);
 
   return (
     <div className="flex min-h-screen md:items-center md:justify-center">
@@ -52,15 +42,15 @@ function App() {
             {currentStep === 3 && (
               <AddOnsForm formData={formValues} updateFields={handleUpdateFields} />
             )}
-            {currentStep === 4 && <Summary formData={formValues} changePlan={goToPlanSelection} />}
+            {currentStep === 4 && <Summary formData={formValues} changePlan={() => goToStep(2)} />}
           </main>
           <div className="fixed bottom-0 left-0 right-0 md:static">
             <div className="mx-auto w-full max-w-[550px]">
               <StepButtons
                 currentStep={currentStep}
                 totalSteps={STEPS.length}
-                onNext={handleNext}
-                onBack={handleBack}
+                onNext={nextStep}
+                onBack={previousStep}
               />
             </div>
           </div>
