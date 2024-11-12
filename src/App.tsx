@@ -9,6 +9,33 @@ import { Sidebar } from './components/Sidebar';
 import { StepButtons } from './components/StepButtons';
 import { useMultiStepForm } from './hooks/useMultiStepForm';
 
+type StepNumber = 1 | 2 | 3 | 4;
+
+const FormStep = ({
+  currentStep,
+  formData,
+  updateFields,
+  onChangePlan,
+}: {
+  currentStep: StepNumber;
+  formData: FormValues;
+  updateFields: (fields: Partial<FormValues>) => void;
+  onChangePlan: () => void;
+}) => {
+  switch (currentStep) {
+    case 1:
+      return <PersonalInfoForm formData={formData} updateFields={updateFields} />;
+    case 2:
+      return <PlanSelectionForm formData={formData} updateFields={updateFields} />;
+    case 3:
+      return <AddOnsForm formData={formData} updateFields={updateFields} />;
+    case 4:
+      return <Summary formData={formData} changePlan={onChangePlan} />;
+    default:
+      return null;
+  }
+};
+
 function App() {
   const { currentStep, nextStep, previousStep, goToStep, isFirstStep, isLastStep } =
     useMultiStepForm(STEPS);
@@ -26,6 +53,18 @@ function App() {
     setFormValues((prevValues) => ({ ...prevValues, ...fields }));
   };
 
+  const handleSubmit = async () => {
+    if (isLastStep) {
+      try {
+        console.log('Form submitted:', formValues);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+      }
+    } else {
+      nextStep();
+    }
+  };
+
   return (
     <div className="flex min-h-screen md:items-center md:justify-center">
       <div className="mx-auto flex h-full w-full max-w-5xl flex-col rounded-3xl md:grid md:min-h-[600px] md:grid-cols-[274px,1fr] md:bg-white md:p-4">
@@ -34,23 +73,19 @@ function App() {
         </div>
         <div className="items flex flex-col justify-between">
           <main className="mx-4 -mt-14 max-w-xl overflow-y-auto rounded-lg bg-white p-6 pb-24 shadow-lg md:mx-auto md:mt-2 md:w-full md:pb-6 md:shadow-none">
-            {currentStep === 1 && (
-              <PersonalInfoForm formData={formValues} updateFields={handleUpdateFields} />
-            )}
-            {currentStep === 2 && (
-              <PlanSelectionForm formData={formValues} updateFields={handleUpdateFields} />
-            )}
-            {currentStep === 3 && (
-              <AddOnsForm formData={formValues} updateFields={handleUpdateFields} />
-            )}
-            {currentStep === 4 && <Summary formData={formValues} changePlan={() => goToStep(2)} />}
+            <FormStep
+              currentStep={currentStep as StepNumber}
+              formData={formValues}
+              updateFields={handleUpdateFields}
+              onChangePlan={() => goToStep(2)}
+            />
           </main>
           <div className="fixed bottom-0 left-0 right-0 md:static">
             <div className="mx-auto w-full max-w-[550px]">
               <StepButtons
                 isFirstStep={isFirstStep}
                 isLastStep={isLastStep}
-                onNext={nextStep}
+                onNext={handleSubmit}
                 onBack={previousStep}
               />
             </div>
