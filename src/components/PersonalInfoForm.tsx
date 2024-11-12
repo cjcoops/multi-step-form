@@ -13,7 +13,7 @@ export function PersonalInfoForm({ formData, updateFields }: PersonalInfoProps) 
         Please provide your name, email address, and phone number.
       </p>
 
-      <form className="mt-6 space-y-4">
+      <form noValidate className="mt-6 space-y-4">
         <div>
           <label htmlFor="name" className="text-marine-blue">
             Name
@@ -25,6 +25,8 @@ export function PersonalInfoForm({ formData, updateFields }: PersonalInfoProps) 
             onChange={(e) => updateFields({ name: e.target.value })}
             className="placeholder:text-cool-gray mt-1 w-full rounded border p-2"
             placeholder="e.g. Stephen King"
+            required
+            minLength={2}
           />
         </div>
         <div>
@@ -38,6 +40,8 @@ export function PersonalInfoForm({ formData, updateFields }: PersonalInfoProps) 
             onChange={(e) => updateFields({ email: e.target.value })}
             className="placeholder:text-cool-gray mt-1 w-full rounded border p-2"
             placeholder="e.g. stephen.king@example.com"
+            required
+            minLength={2}
           />
         </div>
         <div>
@@ -51,6 +55,8 @@ export function PersonalInfoForm({ formData, updateFields }: PersonalInfoProps) 
             onChange={(e) => updateFields({ phone: e.target.value })}
             className="placeholder:text-cool-gray mt-1 w-full rounded border p-2"
             placeholder="e.g. +1 234 567 890"
+            required
+            pattern="[0-9\+\-\s]+"
           />
         </div>
       </form>

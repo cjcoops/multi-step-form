@@ -65,9 +65,25 @@ function App() {
     }
   };
 
+  const handleNext = () => {
+    const form = document.querySelector('form');
+
+    if (form && !form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Proceed to next step if valid
+    if (isLastStep) {
+      handleSubmit();
+    } else {
+      nextStep();
+    }
+  };
+
   return (
     <div className="flex min-h-screen md:items-center md:justify-center">
-      <div className="mx-auto flex h-full w-full max-w-5xl flex-col rounded-3xl md:grid md:min-h-[600px] md:grid-cols-[274px,1fr] md:bg-white md:p-4">
+      <div className="mx-auto flex h-full w-full max-w-5xl flex-col rounded-3xl md:grid md:min-h-[680px] md:grid-cols-[274px,1fr] md:bg-white md:p-4">
         <div className="h-40 md:h-full">
           <Sidebar currentStep={currentStep} steps={STEPS} />
         </div>
@@ -85,7 +101,7 @@ function App() {
               <StepButtons
                 isFirstStep={isFirstStep}
                 isLastStep={isLastStep}
-                onNext={handleSubmit}
+                onNext={handleNext}
                 onBack={previousStep}
               />
             </div>
